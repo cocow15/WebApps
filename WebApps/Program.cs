@@ -1,7 +1,15 @@
+using Dapper;
+using WebApps.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<IDbService, DbService>();
+builder.Services.AddScoped<IEmployeeService, EmployeeService>();
+
+// Add your configuration here
+DefaultTypeMap.MatchNamesWithUnderscores = true;
 
 var app = builder.Build();
 
